@@ -443,8 +443,11 @@ function nextArtwork() {
 // ──────────────────────────────────────────────
 function initNavScroll() {
   const nav = document.getElementById('nav');
+  const heroH = document.getElementById('inicio')?.offsetHeight ?? 500;
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
+    const past = window.scrollY > heroH * 0.6;
+    nav.classList.toggle('scrolled', past);
+    nav.classList.toggle('nav--transparent', !past);
   }, { passive: true });
 }
 

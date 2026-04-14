@@ -72,11 +72,35 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: background 0.4s, border-color 0.3s, box-shadow 0.3s;
+}
+/* Transparent over hero image */
+.nav--transparent {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.nav--transparent .nav__logo,
+.nav--transparent .nav__links a {
+  color: rgba(255,255,255,0.9);
+}
+.nav--transparent .nav__menu-btn span {
+  background: #fff;
 }
 .nav.scrolled {
+  background: rgba(255,255,255,0.95);
   border-bottom-color: var(--c-border);
   box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+}
+.nav.scrolled .nav__logo,
+.nav.scrolled .nav__links a {
+  color: var(--c-ink-mid);
+}
+.nav.scrolled .nav__logo {
+  color: var(--c-ink);
+}
+.nav.scrolled .nav__menu-btn span {
+  background: var(--c-ink);
 }
 
 .nav__inner {
@@ -167,14 +191,24 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   padding: calc(var(--nav-h) + 4rem) 2rem 6rem;
   position: relative;
   overflow: hidden;
+  background-image: url('images/Mirrey App Logo Icon2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* Dark gradient overlay — bottom heavier so text is readable */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(230,230,230,0.25) 0%, transparent 70%);
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.35) 0%,
+      rgba(0,0,0,0.25) 40%,
+      rgba(0,0,0,0.55) 100%
+    );
   pointer-events: none;
 }
 
@@ -189,7 +223,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--c-ink-light);
+  color: rgba(255,255,255,0.7);
   margin-bottom: 1.5rem;
 }
 
@@ -199,21 +233,41 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.02em;
-  color: var(--c-ink);
+  color: #ffffff;
   margin-bottom: 1.5rem;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.4);
 }
 
 .hero__years {
   font-size: 0.9375rem;
   font-weight: 300;
-  color: var(--c-ink-mid);
+  color: rgba(255,255,255,0.75);
   letter-spacing: 0.08em;
+  margin-bottom: 2.5rem;
+}
+
+/* CTA button — style DAIM "SHOP" */
+.hero__cta {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.7);
+  padding: 0.9rem 2.5rem;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.hero__cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--c-ink);
 }
 
 .hero__line {
   width: 1px;
   height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--c-border));
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3));
   margin-block: 3rem 2rem;
 }
 
@@ -223,15 +277,15 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   justify-content: center;
   width: 40px;
   height: 40px;
-  color: var(--c-ink-light);
-  border: 1px solid var(--c-border);
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.35);
   border-radius: 50%;
   transition: color 0.2s, border-color 0.2s, transform 0.3s var(--ease-out);
   animation: float 2.5s ease-in-out infinite;
 }
 .hero__scroll:hover {
-  color: var(--c-ink);
-  border-color: var(--c-ink);
+  color: #fff;
+  border-color: #fff;
   transform: translateY(4px);
   animation: none;
 }
