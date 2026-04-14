@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sermob1 — Catálogo de Obra</title>
+  <meta name="description" content="Catálogo artístico de Sermob1. Obra a lo largo de los años organizada por series y técnicas.">
+  <meta property="og:title" content="Sermob1 — Catálogo de Obra">
+  <meta property="og:description" content="Catálogo artístico de Sermob1.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#inicio" class="nav__logo">Sermob1</a>
+      <ul class="nav__links" role="list">
+        <li><a href="#obra">Obra</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="nav__menu-btn" id="nav-menu-btn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="nav-mobile" hidden>
+      <ul role="list">
+        <li><a href="#obra">Obra</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero" id="inicio">
+    <div class="hero__inner">
+      <span class="hero__eyebrow">Catálogo Artístico</span>
+      <h1 class="hero__name">Sermob1</h1>
+      <p class="hero__years">Obra 2015 — 2024</p>
+    </div>
+    <div class="hero__line" aria-hidden="true"></div>
+    <a href="#obra" class="hero__scroll" aria-label="Ver obra">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+      </svg>
+    </a>
+  </header>
+
+  <!-- ═══ GALLERY ═══ -->
+  <main id="obra" class="gallery-section">
+    <div class="container">
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <span id="obra-count" class="stats-bar__count">— obras</span>
+        <div class="stats-bar__divider" aria-hidden="true"></div>
+        <span class="stats-bar__label">Selecciona una serie</span>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por serie">
+        <button class="filter-btn active" data-filter="all">Toda la obra</button>
+        <!-- Series buttons rendered by JS -->
+      </div>
+
+      <!-- Gallery grid -->
+      <div class="gallery" id="gallery" role="list">
+        <!-- Cards rendered by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div class="gallery-empty" id="gallery-empty" hidden>
+        <p>No hay obras en esta selección.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about" id="sobre">
+    <div class="container container--narrow">
+      <span class="section-eyebrow">Sobre el artista</span>
+      <h2 class="section-title">Sermob1</h2>
+      <div class="about__body">
+        <p>
+          Espacio para la biografía del artista. Aquí puedes describir tu trayectoria,
+          influencias, técnicas y visión artística a lo largo del tiempo.
+        </p>
+        <p>
+          Este catálogo reúne obra de diferentes etapas y series, mostrando la evolución
+          de un trabajo en constante diálogo con la forma, el color y el espacio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="contact" id="contacto">
+    <div class="container container--narrow">
+      <span class="section-eyebrow">Contacto</span>
+      <h2 class="section-title">Colaboraciones &amp; Consultas</h2>
+      <p class="contact__sub">
+        Para adquisición de obra, exposiciones o proyectos colaborativos:
+      </p>
+      <a href="mailto:contacto@sermob1.com" class="contact__email">
+        contacto@sermob1.com
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__name">Sermob1</span>
+      <span class="footer__copy">&copy; <span id="footer-year"></span> Todos los derechos reservados</span>
+    </div>
+  </footer>
+
+  <!-- ═══ LIGHTBOX ═══ -->
+  <div class="lb-backdrop" id="lb-backdrop" aria-hidden="true"></div>
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Vista ampliada de obra"
+    hidden
+  >
+    <button class="lb-close" id="lb-close" aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <button class="lb-nav lb-nav--prev" id="lb-prev" aria-label="Obra anterior">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <button class="lb-nav lb-nav--next" id="lb-next" aria-label="Obra siguiente">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+
+    <div class="lb-inner">
+      <div class="lb-img-wrap">
+        <img src="" alt="" id="lb-img" class="lb-img">
+        <div class="lb-img-placeholder" id="lb-placeholder" aria-hidden="true"></div>
+      </div>
+      <div class="lb-info">
+        <span class="lb-series" id="lb-series"></span>
+        <h2 class="lb-title" id="lb-title"></h2>
+        <dl class="lb-meta">
+          <div class="lb-meta__row">
+            <dt>Año</dt>
+            <dd id="lb-year"></dd>
+          </div>
+          <div class="lb-meta__row">
+            <dt>Técnica</dt>
+            <dd id="lb-technique"></dd>
+          </div>
+          <div class="lb-meta__row">
+            <dt>Dimensiones</dt>
+            <dd id="lb-dimensions"></dd>
+          </div>
+          <div class="lb-meta__row" id="lb-desc-row">
+            <dt>Descripción</dt>
+            <dd id="lb-desc"></dd>
+          </div>
+        </dl>
+        <div class="lb-counter">
+          <span id="lb-index"></span> / <span id="lb-total"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
